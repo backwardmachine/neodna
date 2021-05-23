@@ -1,5 +1,5 @@
 # neodna
-Translates a binary sequence such as DNA into visuals using a library of functions.
+Translates a binary sequence such as DNA into graphical information using a library of functions.
 
 A simple program would be:  
 code__move  
