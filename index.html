@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Neodna</title>
+<script src="js/__debug/__debug.js"></script>
+<script src="js/__init/__init__mouse.js"></script>
+<script src="js/__init/__init__orbit.js"></script>
+<script src="js/__init/__init__controls.js"></script>
+<script src="js/__init/__init__blocks.js"></script>
+<script src="js/__init/__init__gaaden.js"></script>
+<script src="js/__init/__init__pdmn.js"></script>
+<script src="js/__init/__init__satelytes.js"></script>
+<script src="js/__init/__init__stack.js"></script>
+<script src="js/__init/__init__stack__canvas.js"></script>
+<script src="js/__init/__init__stack__packets.js"></script>
+<script src="js/__init/__init__latherituum.js"></script>
+<script src="js/__init/__init__latherituum__mouse.js"></script>
+<script src="js/__init/__init__latherituum__curse.js"></script>
+<script src="js/__init/__init__furnace__mouse.js"></script>
+<script src="js/__init/__init__phylactery__mouse.js"></script>
+<script src="js/__init/__init__parisfair__mouse.js"></script>
+<script src="js/__resize/__resize__stack.js"></script>
+
+<script src="js/Animation.js"></script>
+<script src="js/Block.js"></script>
+<script src="js/Book.js"></script>
+<script src="js/Caoi.js"></script>
+<script src="js/Calismade.js"></script>
+<script src="js/Canterroll.js"></script>
+<script src="js/Canvas.js"></script>
+<script src="js/Chryoch.js"></script>
+<script src="js/Codex.js"></script>
+<script src="js/Fortunes.js"></script>
+<script src="js/Flags.js"></script>
+<script src="js/Functions.js"></script>
+<script src="js/Furnace.js"></script>
+<script src="js/Gaaden.js"></script>
+<script src="js/Gate.js"></script>
+<script src="js/Haidentot.js"></script>
+<script src="js/Itinerary.js"></script>
+<script src="js/Library.js"></script>
+<script src="js/Mouse.js"></script>
+<script src="js/Oldenscrybe.js"></script>
+<script src="js/Packet.js"></script>
+<script src="js/Pandeminium.js"></script>
+<script src="js/Parisfair.js"></script>
+<script src="js/Phylactery.js"></script>
+<script src="js/Rack.js"></script>
+<script src="js/Satelytes.js"></script>
+<script src="js/Sequence.js"></script>
+<script src="js/Skittle.js"></script>
+<script src="js/Skutterer.js"></script>
+<script src="js/Stack.js"></script>
+<script src="js/Tail.js"></script>
+<script src="js/Tome.js"></script>
+
+<script src="js/db/db__calismade.js"></script>
+<script src="js/db/db__export.js"></script>
+<script src="js/db/db__haidentot.js"></script>
+<script src="js/db/db__init.js"></script>
+<script src="js/db/db__pdmn.js"></script>
+<script src="js/db/db__pdmn__codex.js"></script>
+<script src="js/db/db__pdmn__tomes.js"></script>
+<script src="js/db/db__pdmn__oldenscrybe.js"></script>
+<script src="js/db/db__sequence.js"></script>
+<link rel="stylesheet" type="text/css" href="style/style.css">
+<link rel="stylesheet" type="text/css" href="style/curse.css">
+</head>
+<body>
+<div id="orbit">
+</div>
+<div id="gaaden__fortunes__outer">
+	<div id="gaaden__fortunes">
+		<canvas id="__canvas__fortunes"></canvas>
+	</div>
+	<div id="gaaden__fortune__outer">
+		<div id="gaaden__fortune__name">
+			<input type="text" id="gaaden__fortune__name__input" value="" spellcheck="false">
+		</div>
+	</div>
+</div>
+
+<div id="gaaden__calismade__outer">
+	<div id="gaaden__calismade__pos">
+		<div id="gaaden__calismade__pos__title">position</div>
+		<div id="gaaden__calismade__pos__value">322</div>
+	</div>
+	<div id="gaaden__calismade">
+		<canvas id="__canvas__calismade"></canvas>
+	</div>
+</div>
+<div id="import__export__tabs">
+	<div id="import__export__tabs__left">
+		<!--<div id="fasta">fasta</div>-->
+	</div>
+	<div id="import__export__tabs__right">
+		<div id="import__export__tabs__import">import</div>
+		<div id="import__export__tabs__export">export</div>
+		<div id="import__export__tabs__binary">binary</div>
+		<div id="import__export__tabs__fasta">fasta</div>
+		<div id="import__export__tabs__sheet">sheet</div>
+	</div>
+</div>
+
+<div id="import__export__hidden__input__import">
+	<input type="file" id="import" value="import">
+</div>
+<div id="fasta__input">
+	<textarea id="fasta__input__text" spellcheck="false"></textarea>
+</div>
+<div id="orbit__store"></div>
+<div id="top">
+	<div id="top_inner">
+		<div id="neodna__stack__surface"> <!--sized dynamically-->
+
+			<!-- gaaden -->
+			<div id="neodna__grid">
+			<div id="neodna__gaaden">
+
+				<div class="neodna__latherituum__scroller">
+					<div class="neodna__latherituum__curse__button">
+						<div id="neodna__latherituum__curse__lock">lock</div>
+					</div>
+					<div class="neodna__latherituum__curse__left__outer">
+						<div id="neodna__latherituum__curse__left" class="neodna__latherituum__curse__left__inner" >
+							<div class="neodna__latherituum__curse__left"></div>
+						</div>
+					</div>
+					<div class="neodna__latherituum__curse__center">
+						<div id="neodna__latherituum__curse__clear"></div>
+					</div>
+					<div class="neodna__latherituum__curse__right__outer">
+						<div id="neodna__latherituum__curse__right" class="neodna__latherituum__curse__right__inner">
+							<div class="neodna__latherituum__curse__right"></div>
+						</div>
+					</div>
+					<div class="neodna__latherituum__curse__button">
+						<div id="neodna__latherituum__create">store</div>
+					</div>
+				</div>
+
+				<div id="neodna__latherituum">
+					<div id="neodna__latherituum__left__packets">
+						<canvas id="__canvas__sequence__left__packets"></canvas>
+					</div>
+					<div id="neodna__latherituum__left">
+						<canvas id="__canvas__sequence__left"></canvas>
+					</div>
+					<div id="neodna__latherituum__center">
+						<canvas id="__canvas__sequence__center"></canvas>
+					</div>
+					<div id="neodna__latherituum__right__packets">
+						<canvas id="__canvas__sequence__right__packets"></canvas>
+					</div>
+					<div id="neodna__latherituum__right">
+						<canvas id="__canvas__sequence__right"></canvas>
+					</div>
+				</div>
+
+			</div>
+
+
+			<div id="neodna__satelytes__motion__outer">
+				<div id="neodna__satelytes__motion">
+
+					<div id="neodna__satelytes__program"></div>
+					<div id="neodna__satelytes__forward"></div>
+				</div>
+				<div id="neodna__satelytes__moment"></div>
+			</div>
+			</div>
+
+			<div id="neodna__chryoch__outer">
+				<div id="neodna__chryoch">
+
+				</div>
+				<div id="neodna__chryoch__add">+</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="neodna__pdmn">
+	<div id="neodna__pdmn__content">
+		<div id="neodna__pdmn__box">
+			<div id="neodna__pdmn__parisfair"><canvas id="__canvas__parisfair"></canvas></div>
+			<div id="neodna__pdmn__phylactery"><canvas id="__canvas__phylactery"></canvas></div>
+			<div id="neodna__pdmn__furnace__stack"><canvas id="__canvas__furnace"></canvas></div>
+			<div id="neodna__pdmn__codexes"></div>
+			<div id="neodna__pdmn__book"></div>
+		</div>
+	</div>
+	<div id="neodna__pdmn__toggle">
+		<div id="neodna__pdmn__toggle__icon">&#9650;</div>
+	</div>
+</div>
+
+<div id="journey"></div>
+
+<script language="javascript">
+console.log = function() {}
+
+var sequence = __fasta__to__binary(
+	`TAATGGGCGAACGACGGGAATTGAACCCGCGCATGGTGGATTCACAATCCACTGCCTTGATCCACTTGGC
+TACATCCGCCCCCACTACTACTAATATTTTTTTTATTTTTAATCCATTTAAAAATTAAAAATAAAAAAAA
+AAAAAGAATATTCCATTTTTAATGAAATCAAAAAAAGAAATTCATAATGGAAAATATTTCATTCGATTGT
+TAATTTTTAACATTTTTCTATCTTAATTATGAGATAGAAGAAGCAGAAAATTATAACCTTTCTATTTTAT
+TTGAAAAAAAAAACTAGAAGATAATAATCTCACAAAGCCTTACAAAGGGTTGAAAAGAATGTATATAAAT
+TCAAAGGGTTGAAAAGAATGTAGATAAATTCATATCTAAGGAAAAAAGTATGATAAGCAATCATAAAGCA
+ATCCCTAAGACTAGAATACTTTTTCTTATGTTGAAGTAAAGAAAAACTTATGTAAAGAAAAGAGCACTAA
+ATAAAGGAACAATAACCAATTTCTTTTTCTATCAAGAGTGTTGGTTATTGCTCCTTTCCAATCAAAAACT
+CGGCTAGACTTATACTAAGACCAAAGTCTTATCCATTTGTAGATGGAACTTCGACAGCAGCTAGGTCTAG
+AGGGAAGTTATGAGCATTACGTTCATGCATAACTTCCATACCAAGGTTAGCACGATTAATAATATCAGCC
+CAGGTATTAATTACACGACCTTGACTATCAACTACGGATTGGTTGAAATTGAAACCATTTAGGTTGAAAG
+CCATAGTGCTGATACCTAAAGCAGTGAACCAGATACCTACTACAGGCCAAGCAGCTAGGAAGAAGTGTAA
+AGAACGAGAATTGTTGAAACTAGCATATTGGAAGATCAATCGGCCAAAATAACCATGAGCAGCTACGATA
+TTATAAGTTTCTTCCTCTTGACCGAATCTGTAACCTTCATTAGCAGATTCATTTTCTGTGGTTTCCCTGA
+TCAAACTAGAGGTTACCAAGGAACCATGCATAGCACTGAATAGGGAGCCGCCGAATACACCAGCTACGCC
+TAACATGTGAAATGGGTGCATAAGGATGTTGTGCTCAGCCTGGAATACAATCATGAAGTTGAAAGTACCA
+GAAATTCCTAGAGGCATACCATCCGAAAAACTTCCTTGACCAATTGGGTAGATCAAGAAAACAGCAGTAG
+CAGCTGCAACAGGAGCTGAATATGCAACAGCAATCCAAGGGCGCATACCCAGACGGAAACTAAG`
+);
+
+var gaaden = __init__gaaden( sequence );
+gaaden.init();
+gaaden.draw( 1 );
+gaaden.changed();
+gaaden.play();
+gaaden.draw( 1 );
+
+__init__satelytes();
+__init__pdmn();
+var db = db__init();
+__init__controls();
+
+document.getElementById( "gaaden__fortune__name__input" ).addEventListener( "input", function( e ) {
+	//console.log( 'gaaden__fortune__name__input is changing' );
+	gaaden.db__name = e.target.value;
+	db__sequence__update__name( e.target.value );
+} );
+
+pandeminium.draw();
+</script>
+</body>
+</html>

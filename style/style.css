@@ -1,0 +1,538 @@
+
+
+body {
+	background:#0077aa;
+  height:100%;
+  width:100%;
+  padding:0px;
+  margin:0px;
+}
+
+#top
+{
+  position:relative;
+  padding:10px;
+  margin:0px;
+}
+
+#top_inner
+{
+  position:relative;
+  padding:10px;
+  margin:0px;
+}
+
+#neodna__stack__surface {
+	display:block;
+  position:relative;
+  padding:0px;
+  margin:0px;
+	top:0px;
+	left:0px;
+}
+
+#neodna__latherituum
+{
+	height:0px;
+	font-size:0px;
+	height:100px;
+}
+
+#neodna__latherituum__left {
+	display:block;
+  position:relative;
+  padding:0px;
+  margin:0px;
+	left:0px;
+	top:0px;
+	width:300px;
+	height:0px;
+	font-size:0px;
+	z-index:65;
+}
+
+#neodna__latherituum__left__packets {
+	display:block;
+  position:relative;
+  padding:0px;
+  margin:0px;
+	left:0px;
+	top:0px;
+	width:300px;
+	height:0px;
+	font-size:0px;
+	z-index:80;
+	vertical-align:top;
+}
+
+#neodna__latherituum__right {
+  position:relative;
+  padding-left:0px;
+	padding-top:0px;
+	top:0px;
+	left:0px;
+	width:300px;
+  height:74px;
+	z-index:65;
+}
+
+#neodna__grid {
+	display: grid;
+	grid-template-columns: 300px 1fr;
+	grid-gap: 12px;
+}
+
+#neodna__satelytes__motion__outer {
+	display:inline-block;
+	position:relative;
+	width:300px;
+	height:120px;
+	font-size:0px;
+}
+
+#neodna__satelytes__motion
+{
+	display:block;
+	position:absolute;
+	left:0px;
+	bottom:0px;
+	width:280px;
+	height:48px;
+}
+
+#neodna__satelytes__moment {
+	display:inline-block;
+	height:48px;
+	color: #fff;
+	font-size:12px;
+	color:#999;
+}
+
+#neodna__satelytes__program {
+	display:inline-block;
+	width:48px;
+	height:48px;
+	background: url( "rightdown__plain.png" );
+}
+
+#neodna__satelytes__program:hover {
+	cursor:pointer;
+	background: url( "rightdown__hover.png" );
+}
+
+#neodna__satelytes__forward {
+	display:inline-block;
+	margin-left:5px;
+	width:48px;
+	height:48px;
+	background: url( "rightarrow__plain.png" );
+}
+
+#neodna__satelytes__forward:hover {
+	cursor:pointer;
+	background: url( "rightarrow__hover.png" );
+}
+
+#neodna__satelytes__forward .selected {
+	background: url( "rightarrow__hover.png" );
+}
+
+
+#gaaden__calismade,
+#gaaden__fortunes
+{
+	position:relative;
+	padding:0px;
+	padding-left:4px;
+	margin-left:-4px;
+	margin-top:0px;
+	height:60px;
+	width:600px;
+	font-size:0px;
+}
+
+#gaaden__fortunes__outer
+{
+	padding-bottom:60px;
+}
+
+#gaaden__fortune__outer
+{
+	width:100%;
+	height:30px;
+	font-size:18px;
+	font-family:Georgia;
+	vertical-align:bottom;
+	margin-top:10px;
+	background:#166d8c;
+	color:#5ff8ff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: #fff !important;
+}
+
+#gaaden__fortune__name__input {
+	width:700px;
+	font-size:14px;
+	font-family: Georgia;
+	background:none;
+	border:none;
+	color:#5ff8ff;
+}
+
+#gaaden__calismade__outer
+{
+	background:#004466;
+	height:100px;
+}
+#gaaden__calismade__pos
+{
+	display:block;
+	height:18px;
+	font-size:14px;
+	vertical-align:middle;
+}
+#gaaden__calismade__pos__value
+{
+	display:inline-block;
+	font-family: georgia;
+	background: #0b83d4;
+	width:50px;
+	height:10px;
+	font-size:10px;
+	color:#fff;
+	vertical-align:middle;
+	margin-bottom:0px;
+}
+#gaaden__calismade__pos__title
+{
+	display:inline-block;
+	font-family: georgia;
+	background: #00ccdd;
+	width:100px;
+	height:14px;
+	font-size:14px;
+}
+
+#neodna__stack__info
+{
+	position:absolute;
+	top:10px;
+	left:261px;
+	font-size:12px;
+	font-weight:bold;
+}
+
+#neodna__stack__options {
+  position:relative;
+  padding:4px;
+  margin:0px;
+  top:10px;
+  left:0px;
+  background:#777;
+}
+
+#neodna__stack__options DIV {
+  font-size   : 18px;
+  font-weight : bold;
+  font-family : Didot, serif;
+  background  : red;
+  padding     : 0px;
+  display     : inline-block;
+  color       : #fff;
+}
+
+#fasta__input
+{
+	position:absolute;
+	display:none;
+	padding:10px;
+	width:100%;
+	height:300px;
+	background:#004466;
+	z-index:200;
+	font-size:12px;
+	opacity:0.9;
+}
+
+#fasta__input__text {
+	width:600px;
+	height:300px;
+}
+
+#tabs {
+	position:relative;
+	height:20px;
+}
+
+#tabs div {
+	display:inline-block;
+	font-family: georgia;
+	font-size:14px;
+	padding:0px;
+	margin:0px;
+	height:14px;
+	background:#00ccff;
+	vertical-align:middle;
+}
+
+#import__export__tabs {
+	display:block;
+	text-align:right;
+	width:600px;
+}
+
+#import__export__tabs__right div,
+#import__export__tabs__left div {
+	display:inline-block;
+	font-family: georgia;
+	font-size:14px;
+	padding:0px;
+	margin-right:2px;
+	margin-top:2px;
+	height:14px;
+	background:#166d8c;
+	vertical-align:middle;
+	color:#5ff8ff;
+	/*
+	border:1px solid #267d9c;
+	border-radius: 1px;
+  box-shadow: 0px 0px 0px 1px rgba(0,0,0,0.3);
+	*/
+}
+
+#import__export__tabs__fasta {
+	display:inline-block;
+}
+
+#import__export__tabs__left {
+	float:left;
+}
+
+#import__export__hidden__input__import {
+	position:absolute;
+	display:none;
+	padding:10px;
+	left:0px;
+	width:100%;
+	height:30px;
+	background:#004466;
+	z-index:200;
+	font-size:30px;
+	opacity:0.9;
+}
+
+#neodna__chryoch {
+	margin:0px;
+	padding:0px;
+	margin-top:10px;
+	display: grid;
+	grid-template-columns: 160px 160px 160px 160px;
+	grid-column-gap: 0px;
+	grid-gap: 0px;
+	width:100%;
+	font-size:0px;
+}
+
+.neodna__satelyte__outer {
+	display:relative;
+	margin:0px;
+	padding:0px;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 0px;
+	background:#004466;
+	font-size:0px;
+	z-index:2;
+}
+
+.neodna__satelyte__vars {
+	display:inline-block;
+	width:100px;
+	height:100px;
+	background:#002233;
+	font-family: Georgia;
+	font-size:12px;
+	color:#bbbbde;
+	display:none;
+}
+
+.neodna__satelytes__tab {
+	display:inline-block;
+	height:12px;
+	font-size:12px;
+	padding:2px;
+	background: #00ccdd;
+}
+
+#neodna__pdmn {
+	display:none;
+	position:absolute;
+	top:0px;
+	left:300px;
+	height:500px;
+	width:400px;
+	opacity: 1.0;
+	z-index:100;
+	background:#00ccdd;
+}
+
+#neodna__pdmn__toggle {
+	position:absolute;
+	bottom:0px;
+	width:100%;
+	height:30px;
+	background:#00aadd;
+	z-index:101;
+	cursor:pointer;
+}
+
+#neodna__pdmn__toggle__icon {
+	width:20px;
+	height:20px;
+	font-size:10px;
+	-webkit-transform: rotate(-180deg);
+	-moz-transform: rotate(-180deg);
+	transform:rotate(-180deg);
+}
+
+#neodna__pdmn__content {
+	vertical-align:bottom;
+	height:100%;
+	width:100%;
+}
+
+#neodna__pdmn__box {
+	position:absolute;
+	bottom:30px;
+	padding:5px;
+}
+
+#neodna__pdmn__tomes {
+	height:60px;
+}
+
+#neodna__pdmn__codexes__global {
+	display:inline-block;
+	display: grid;
+	grid-auto-flow:column;
+	grid-template-columns: repeat( auto-fill, 88px );
+	grid-gap: 0px;
+	width: 0px;
+}
+/*
+#neodna__pdmn__codexes__global div {
+	display:inline-block;
+	border:1px solid black;
+	width:50px;
+	height:50px;
+	background:orange;
+}
+*/
+#neodna__pdmn__codexes {
+	display: grid;
+	grid-template-columns: 50px 1fr;
+	grid-gap: 0px;
+	height:80px;
+}
+
+#neodna__pdmn__phylactery {
+	width:600px;
+}
+#neodna__pdmn__furnace {
+
+}
+
+#neodna__pdmn__codex__focus {
+	background:grey;
+	width:85px;
+	height:65px;
+	border:5px solid #333;
+}
+
+#neodna__pdmn__codex__focus div {
+	border:0px;
+}
+
+#__canvas__furnace {
+	z-index:105;
+}
+
+.neodna__pdmn__tome {
+	display:inline-block;
+	width:80px;
+	height:60px;
+	z-index:102;
+}
+
+.neodna__pdmn__codex {
+	display:inline-block;
+	width:90px;
+	height:70px;
+	z-index:103;
+	border-top:5px solid #00ccdd;
+	border-bottom:5px solid #00ccdd;
+}
+
+.neodna__pdmn__tome__selected,
+.neodna__pdmn__codex__selected
+{
+	background:#00cfff;
+}
+
+.neodna__pdmn__code,
+.neodna__pdmn__codex__code
+ {
+	display: inline-block;
+	font-size:   10px;
+	font-family: Georgia;
+	background:  yellow;
+	margin-right:2px;
+	padding:2px;
+}
+
+.neodna__pdmn__codex__code
+{
+	display:block;
+	pointer-events:none;
+	width:80px;
+	height:12px;
+}
+
+.neodna__pdmn__codexes__plus {
+	display:inline-block;
+	font-size:48px;
+	font-weight:bold;
+	text-align:center;
+	width:48px;
+	height:48px;
+	background:#333;
+	color:#fff;
+	padding-bottom:4px;
+}
+
+#neodna__pdmn__book {
+	width:400px;
+}
+
+#neodna__chryoch__add {
+	display:inline-block;
+	font-size:48px;
+	font-weight:bold;
+	text-align:center;
+	width:48px;
+	height:48px;
+	background:#333;
+	color:#fff;
+	padding-bottom:4px;
+}
+
+#neodna__chryoch__add:hover {
+	background:#555;
+	cursor:pointer;
+}
