@@ -374,6 +374,7 @@ class neodna__Packets
     if ( this.array.length )
     {
       var start = -1;
+      var i = 0;
       for (
         i = 0;
           i < this.array.length - 1;
@@ -386,7 +387,6 @@ class neodna__Packets
         {
           if ( a.packets.array.length )
           {
-            //console.log( 'fired to an array' );
             a.set   ( 0 );
             a.add   ( 1 );
             a.packets.power ( 0 );
@@ -398,8 +398,7 @@ class neodna__Packets
           }
           else
           {
-            //console.log( 'fired to a single' );
-            a.set ( 1 ); // gets fired
+            a.set ( 1 );
             this.power( start );
           }
           return 1;
@@ -427,7 +426,6 @@ class neodna__Packets
         var b = this.array[ i + 1 ];
         if ( a.value == 0 )
         {
-          //console.log( 'starting at 0' );
           if ( b.value == 0 )
           {
             if ( ( i + 1 ) == ( this.array.length - 1 ) )
