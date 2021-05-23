@@ -9,7 +9,7 @@ code__origin
 code__codex  
 code__direction  
 
-![Screenshot](ss.jpg)
-
-The program uses local IndexedDB storage, you can use the import button in the main program on the 
+Requires Google Chrome or Opera browser. The program uses local IndexedDB storage, you can use the import button in the main program on the 
 json database in the main folder to import an existing database of examples.
+
+![Screenshot](ss.jpg)
