@@ -8,3 +8,6 @@ code__direction
 code__origin  
 code__codex  
 code__direction  
+
+The program uses local IndexedDB storage, you can use the import button in the main program on the 
+json database in the main folder to import an existing database of examples.
