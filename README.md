@@ -1,5 +1,5 @@
 # neodna
-Translates a binary sequence such as DNA into graphical information using a library of functions.
+Translates binary sequences and DNA into graphical information and images using a library of functions.
 
 A simple program would be:  
 code__move  
@@ -7,9 +7,8 @@ code__write
 code__direction  
 code__origin  
 code__codex  
-code__direction  
+code__move
 
-Requires Google Chrome or Opera browser. The program uses local IndexedDB storage, you can use the import button in the main program on the 
-json database in the main folder to import an existing database of examples.
+Tested in Google Chrome, Firefox and Opera browsers. The program uses local IndexedDB storage, you can use the import option in the main program to import the existing database of examples.
 
 ![Screenshot](ss.jpg)
