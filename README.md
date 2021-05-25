@@ -1,5 +1,5 @@
 # neodna
-Translates binary sequences and DNA into turtle-like graphical information and images using a library of functions.
+Translates binary sequences and DNA sequences into turtle-like graphical information and images using a library of functions.
 
 A simple program would be:  
 code__move  
