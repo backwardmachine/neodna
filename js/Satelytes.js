@@ -42,7 +42,7 @@ class neodna__Satelytes
     for ( let satelyte of this.satelytes )
     {
       //satelyte.program( gaaden.__stack__center.sequence );
-      if ( satelyte.oldenscrybe__id )
+      if ( satelyte.oldenscrybe__id != -1 )
       {
         var parisfair = pandeminium.parisfair;
         var oldenscrybe = parisfair.get( satelyte.oldenscrybe__id );

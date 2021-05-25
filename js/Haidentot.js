@@ -75,7 +75,7 @@ class neodna__Haidentot
     this.skutterer = 0;
     this.animation = new neodna__Animation();
     this.oldenscrybe = 0;
-    this.oldenscrybe__id = 0;
+    this.oldenscrybe__id = -1;
     this.nest = 0;
     this.src = 0;
     this.src__offset = 0;
@@ -328,7 +328,8 @@ class neodna__Haidentot
       name:        this.name,
       color:       this.color,
       oldenscrybe: this.oldenscrybe.id
-    }
+    };
+    console.log( 'updating haidentot=', __haidentot );
     db__haidentot__update( __haidentot );
 
     //this.reset();

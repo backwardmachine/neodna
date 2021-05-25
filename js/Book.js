@@ -40,6 +40,8 @@ class neodna__PdmnBook
     {
       var elem = document.getElementById( "neodna__pdmn__code__" + code.id );
       elem.onclick 			= __init__pdmn__code__click;
+      elem.onmouseover  = __init__pdmn__code__mouseover;
+      elem.onmouseout   = __init__pdmn__code__mouseout
       elem.ondragstart 	= __init__pdmn__code__drag;
     //  elem.ondrop 			= __init__pdmn__code__drop;
     }
@@ -52,9 +54,7 @@ class neodna__PdmnBook
     {
     	html += '<div class="neodna__pdmn__code" id="neodna__pdmn__code__'
     	+ code.id + '" draggable="true" style="background:' + code.color
-    	+ '">' + code.name + '</div>';
-
-
+    	+ '"><div class="neodna__pdmn__code__inner">' + code.name + '</div></div>';
     }
     return html;
   }

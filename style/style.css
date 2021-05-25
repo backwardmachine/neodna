@@ -486,22 +486,56 @@ input:-webkit-autofill:active {
 }
 
 .neodna__pdmn__code,
+.neodna__pdmn__code__selected,
 .neodna__pdmn__codex__code
  {
 	display: inline-block;
 	font-size:   10px;
 	font-family: Georgia;
-	background:  yellow;
 	margin-right:2px;
-	padding:2px;
 }
 
 .neodna__pdmn__codex__code
 {
+	position:relative;
 	display:block;
 	pointer-events:none;
 	width:80px;
 	height:12px;
+	padding:2px;
+}
+
+.neodna__pdmn__code,
+.neodna__pdmn__code__selected
+{
+	position:relative;
+	padding:0px;
+	vertical-align:middle;
+	height:16px;
+	width:80px;
+}
+
+.neodna__pdmn__code__inner
+{
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:block;
+	pointer-events:none;
+	height:16px;
+	background-color: rgba( 255, 255, 255, 0.3 );
+	vertical-align:middle;
+}
+
+.neodna__pdmn__code__selected {
+	cursor:pointer;
+}
+.neodna__pdmn__code__selected div.neodna__pdmn__code__inner {
+	display:inline-block;
+	background:white;
+	color:#000;
+	background-color: rgba( 255, 255, 255, 0.5 );
+	pointer-events:none;
 }
 
 .neodna__pdmn__codexes__plus {
@@ -517,7 +551,7 @@ input:-webkit-autofill:active {
 }
 
 #neodna__pdmn__book {
-	width:400px;
+	width:600px;
 }
 
 #neodna__chryoch__add {

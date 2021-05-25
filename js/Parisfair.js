@@ -5,7 +5,7 @@ class neodna__PdmnParisfair
     this.stack = 0;
     this.oldenscrybe = new Array();
     this.oldenscrybe__over = 0;
-    this.oldenscrybe__selected = 0;
+    this.oldenscrybe__selected = -1;
     this.host = 0;
     this.canterroll = new Array(); // a straight ordered list of codex ie. 3, 54, 23, 56, 53
   }
@@ -20,7 +20,7 @@ class neodna__PdmnParisfair
       nest		 		: "__canvas__parisfair",
       container   : "neodna__pdmn__parisfair",
       caoi		 		: caoi__binary__parisfair,
-      pixels	 		: { x: 10, y: 10 },
+      pixels	 		: { x: 16, y: 16 },
       visible  		: 2000
     };
 
@@ -45,9 +45,8 @@ class neodna__PdmnParisfair
   {
     // restore previous
     var oldenscrybe = 0;
-    var id = this.oldenscrybe__selected;
-    if ( id )
-      oldenscrybe = this.get( id );
+    if ( this.oldenscrybe__selected != -1 )
+      oldenscrybe = this.get( this.oldenscrybe__selected );
     if ( !oldenscrybe && this.oldenscrybe.length )
       oldenscrybe = this.oldenscrybe[ this.oldenscrybe.length - 1 ];
     if ( oldenscrybe )
@@ -108,8 +107,11 @@ class neodna__PdmnParisfair
     var canvas = this.stack.canvas;
     var coords = canvas.coords( position + 1 );
     var unit = canvas.getXY( coords.x, coords.y );
-    on ? unit.__flags.setflag( __STACK__MOUSE__CLICKED )
-       : unit.__flags.endflag( __STACK__MOUSE__CLICKED );
+    if ( unit )
+    {
+      on ? unit.__flags.setflag( __STACK__MOUSE__CLICKED )
+         : unit.__flags.endflag( __STACK__MOUSE__CLICKED );
+    }
   }
 
   adjusted(
@@ -127,6 +129,7 @@ class neodna__PdmnParisfair
     {
       if ( this.host )
       {
+        console.log( 'setting host to oldenscrybe=', oldenscrybe );
         this.host.link( oldenscrybe );
         this.host.reset();
       }

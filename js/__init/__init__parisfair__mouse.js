@@ -46,21 +46,8 @@ function __init__parisfair__mouse__click( px, py )
       }
       */
     }
-    else {
-      // only change clicked by having another clicked
-      if ( unit__clicked )
-      {
-        unit__clicked.__flags.endflag( __STACK__MOUSE__CLICKED );
-        unit__clicked.modified = 1;
-      }
-
-      console.log( 'found unit which was clicked=', unit );
-      unit.__flags.setflag( __STACK__MOUSE__CLICKED );
-      this.mouse.current__clicked = {
-        x: unit.x,
-        y: unit.y
-      };
-      unit.modified = 1;
+    else
+    {
 
       var pos = unit.pos();
       console.log( 'pos=', pos );
@@ -68,6 +55,21 @@ function __init__parisfair__mouse__click( px, py )
       var oldenscrybe = parisfair.oldenscrybe[ pos - 1 ];
       if ( oldenscrybe )
       {
+        // only change clicked by having another clicked
+        if ( unit__clicked )
+        {
+          unit__clicked.__flags.endflag( __STACK__MOUSE__CLICKED );
+          unit__clicked.modified = 1;
+        }
+
+        console.log( 'found unit which was clicked=', unit );
+        unit.__flags.setflag( __STACK__MOUSE__CLICKED );
+        this.mouse.current__clicked = {
+          x: unit.x,
+          y: unit.y
+        };
+        unit.modified = 1;
+
         parisfair.to( oldenscrybe.id );
         draw = 1;
       }

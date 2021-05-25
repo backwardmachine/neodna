@@ -161,11 +161,27 @@ function __init__pdmn__track( e )
   parisfair.watch( satelyte );
 }
 
-function __init__pdmn__code__click( e ) {
+function __init__pdmn__code__click( e )
+{
 	var index = e.target.value;
 }
 
-function __init__pdmn__code__drag( e ) {
+function __init__pdmn__code__mouseover( e )
+{
+	var elem = document.getElementById( e.target.id );
+  if ( elem && elem.className == 'neodna__pdmn__code' )
+    elem.className = 'neodna__pdmn__code__selected';
+}
+
+function __init__pdmn__code__mouseout( e )
+{
+	var elem = document.getElementById( e.target.id );
+  if ( elem && elem.className == 'neodna__pdmn__code__selected' )
+    elem.className = 'neodna__pdmn__code';
+}
+
+function __init__pdmn__code__drag( e )
+{
 	console.log( 'code is being dragged=', e.target.id );
 	var numbers = e.target.id.match( /([0-9]+)$/ );
 	console.log( 'matched id=', numbers[ 0 ] );

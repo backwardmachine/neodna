@@ -60,79 +60,8 @@ Handler.code__codex = function ( cursor ) { // need to load the codex in by defa
 Handler.code__packet = function ( cursor ) {
   var x = getb( cursor.maiden );
   cursor.packets.settle( x );
-  //console.log( cursor.packets );
-  //console.log( 'packets=', cursor.packets );
 }
 
-/*
-Handler.code__packetr = function( cursor ) {
-  var x = getb( cursor.maiden );
-  cursor.packets.remove( x );
-  cursor.skittle = 0;
-  // skittle will be loose
-}
-
-Handler.code__packetc = function( cursor ) {
-  var x = getb( cursor.maiden );
-  //console.log( 'packets=', cursor.packets );
-  //console.log( 'skittle=', cursor.skittle );
-  cursor.packets.array[ cursor.skittle ].add( x );
-}
-
-Handler.code__packetcr = function( cursor ) {
-  var x = getb( cursor.maiden );
-  if ( !cursor.packets.array[ cursor.skittle ] )
-    console.log( 'cant find item with id =', cursor.skittle );
-  cursor.packets.array[ cursor.skittle ].remove( x );
-}
-
-Handler.code__sig = function ( cursor ) {
-  var x = getb( cursor.maiden );
-  if ( x )
-    cursor.sigs.add( cursor.sigt );
-  //else
-    //cursor.sigs.remove( cursor.sigt );
-}
-
-Handler.code__sigc = function( cursor ) {
-  var x = getb( cursor.maiden );
-  if ( x )
-    cursor.sigs.array[ cursor.sig ].add( cursor.sigt );
-  else
-    cursor.sigs.array[ cursor.sig ].remove( cursor.sigt );
-}
-
-Handler.code__sigm = function ( cursor ) {
-  var x = getb( cursor.maiden );
-  cursor.sigt = x;
-}
-
-Handler.code__sigf = function ( cursor ) {
-  cursor.sigt = cursor.sigt ? 0 : 1;
-}
-
-
-Handler.code__skittle = function ( cursor ) {
-  if ( !cursor.packets.array.length )
-    cursor.skittle = 0;
-  else
-  {
-    var a = ( cursor.packets.array.length + cursor.skittle + cursor.maiden );
-    if ( a < 0 )
-      cursor.skittle = 0;
-    else
-      cursor.skittle = a % cursor.packets.array.length;
-  }
-}
-
-*/
-/*
-Handler.code__raise = function ( cursor ) { // set potential of vars to infinity
-  var x = getb( cursor.maiden );
-  if ( cursor.packets.length )
-    cursor.packets[ cursor.skittle ].add( x );
-}
-*/
 Handler.code__origin = function ( cursor ) {
   cursor.x = cursor.ox;
   cursor.y = cursor.oy;
@@ -226,14 +155,14 @@ Handler.code__when = function ( cursor ) {
 }
 */
 
-Handler.code__mod = function ( cursor ) {
+Handler.code__extract = function ( cursor ) {
   var n = 0;
   var block = cursor.__data.getXY( cursor.x, cursor.y );
   if ( block )
   {
     cursor.skittle.reset();
     cursor.skittle.go( cursor.packets, 1 );
-    var n = cursor.skittle.t;
+    var n = cursor.skittle.binary();
     var b = getb( cursor.maiden );
     if ( b )
       block.data = n ? '1' : '0';
@@ -395,6 +324,47 @@ Handler.code__shorten = function ( cursor ) {
   cursor.packets.shorten( b, 1 );
 }
 
+Handler.code__canvas = function ( cursor ) {
+  var picture = cursor.pictures.focus();
+  if ( picture && picture.length && !picture.finished )
+    picture.length.spin( 1 );
+}
+
+Handler.code__picture = function ( cursor ) {
+  var picture = cursor.pictures.focus();
+  if ( !picture )
+    picture = cursor.pictures.add();
+}
+
+Handler.code__pgate = function ( cursor ) {
+  var picture = cursor.pictures.focus();
+  if ( picture && !picture.length )
+  {
+    picture.length = new neodna__Gate();
+    picture.length.potential( 1000 );
+  }
+}
+
+Handler.code__probe = function ( cursor ) {
+  var picture = cursor.pictures.focus();
+  if ( picture && !picture.finished )
+  {
+    cursor.skittle.reset();
+    cursor.skittle.go( cursor.packets, 1 );
+    var b = cursor.skittle.binary();
+    var success = picture.add( b );
+    if ( !success )
+    {
+      picture.done();
+      cursor.pictures.spin( cursor.maiden );
+    }
+  }
+}
+
+Handler.code__page = function ( cursor ) {
+  cursor.pictures.spin( cursor.maiden );
+}
+
 class neodna__PdmnCodex
 {
 	constructor( id, color )
@@ -454,7 +424,8 @@ class neodna__PdmnCodex
         continue;
 			//console.log( 'name=', name );
 			html += '<div id="neodna__pdmn__codex' + this.id + '__code' + i
-			+ '" class="neodna__pdmn__codex__code" style="background:' + code.color + '">' + name.substring( 6 ) + '</div>';
+			+ '" class="neodna__pdmn__codex__code" style="background:' + code.color
+      + '"><div class="neodna__pdmn__code__inner">' + name.substring( 6 ) + '</div></div>';
 			i++;
 		}
 		return html;

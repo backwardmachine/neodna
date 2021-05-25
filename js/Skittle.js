@@ -2,13 +2,13 @@ class neodna__Skittle
 {
   constructor()
   {
-    this.t = 0;
-    this.a = 2;
-    this.g = 5; // maximum number of angles
-    this.c = 0;
-    this.l = 0;
+    this.t = 0; // turn
+    this.a = 2; // angles
+    this.g = 5; // potential
+    this.c = 0; // count
+    this.l = 0; // depth
     this.s = 0;
-    this.pt = 0;
+    this.pt = 0; // pointer
   }
 
   reset()
@@ -53,6 +53,13 @@ class neodna__Skittle
   {
     this.pt = pt;
     this.spin();
+  }
+
+  binary()
+  {
+    if ( this.a != 2 )
+      return this.t % 2;
+    return this.t;
   }
 
   set( p, n, b )

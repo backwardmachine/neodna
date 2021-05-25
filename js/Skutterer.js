@@ -19,6 +19,7 @@ class neodna__Skutterer
     this.packets   = new neodna__Packets();
     this.skittle   = new neodna__Skittle();
     this.gate      = new neodna__Gate();
+    this.pictures  = new neodna__Pictures();
     this.frames    = new Array();
     this.escape    = 0;
     this.pos       = 0;

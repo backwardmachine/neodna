@@ -205,12 +205,13 @@ function caoi__binary__furnace( unit, canvas, block )
   if ( block.data
     && block.data != -1
     && block.data != 0
-    && block.data != 1)
+    && block.data != 1 )
   {
     context.fillStyle = block.data.color;
   }
   else
-    context.fillStyle = '#ffffff';
+    return;
+  //context.fillStyle = '#ffffff';
 
   //console.log( unit );
   if ( unit.__flags.isflags() )
@@ -384,7 +385,9 @@ function caoi__binary__phylactery( unit, canvas, block )
     context.fillStyle = block.data.color;
   }
   else
-    context.fillStyle = '#ffffff';
+    return;
+  //else
+  //  context.fillStyle = '#ffffff';
 
   if ( unit.__flags.isflags() )
   {
@@ -434,7 +437,9 @@ function caoi__binary__parisfair( unit, canvas, block )
     context.fillStyle = block.data.color;
   }
   else
-    context.fillStyle = '#ffffff';
+    return;
+  //else
+  //  context.fillStyle = '#ffffff';
 
   if ( unit.__flags.isflags() )
   {

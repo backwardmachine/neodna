@@ -56,10 +56,13 @@ function __init__controls()
     {
       console.log( event );
       var json = event.target.result;
-      //var json = JSON.parse( event.target.result );
-      ///console.log( json );
       clearDatabase( db.connection ).then( ( value ) => {
-        importFromJson( db.connection, json );
+        importFromJson( db.connection, json ).then( ( value ) => {
+          console.log( 'imported database' );
+          db = db__init();
+          var elem = document.getElementById( "import__export__tabs__import" );
+          elem.onclick();
+        } );
       } );
 
     };
@@ -70,16 +73,7 @@ function __init__controls()
 
   function __init__fasta__input( e, binary )
   {
-    /*
-    var stack = gaaden.__stack__center;
-    var sequence = stack.sequence;
-    sequence.set( binary );
-    console.log( gaaden );
-    sequence.set__offset( 0 );
-    sequence.build();
-    */
     gaaden.set( binary );
-    // do logical update in the database of the sequence
     console.log( 'sequence from fasta=', binary );
     db__sequence__update__sequence( binary );
 
@@ -130,8 +124,12 @@ function __init__controls()
   }
 */
 
-  document.getElementById( "neodna__latherituum__create" ).onclick = function ( e )
-  {
+  document.getElementById( "neodna__latherituum__create" ).onclick = function ( e ) {
     db__sequence__add( e );
   }
+
+  document.getElementById( "gaaden__fortune__name__input" ).addEventListener( "input", function( e ) {
+  	gaaden.db__name = e.target.value;
+  	db__sequence__update__name( e.target.value );
+  } );
 }

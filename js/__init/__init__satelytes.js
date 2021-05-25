@@ -17,7 +17,7 @@ function __init__satelytes( )
 
   __gaaden__satelytes__forward__fn = function( e )
   {
-  	gaaden.satelytes.interval = 10;
+  	gaaden.satelytes.interval = 20;
   	gaaden.satelytes.play();
   	gaaden.satelytes.draw( 0 ); // draw modified units only
 

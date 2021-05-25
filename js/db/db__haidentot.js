@@ -44,10 +44,11 @@ function db__haidentot__update( haidentot )
   r1.onsuccess = function()
   {
     var __haidentot = r1.result;
-    console.log( '__haidentot=', __haidentot );
+
     __haidentot.name = haidentot.name;
     __haidentot.oldenscrybe = haidentot.oldenscrybe;
     //__haidentot.color = haidentot.color;
+    console.log( '__haidentot db update=', __haidentot );
     let r2 = store.put( __haidentot );
     r2.onsuccess = function() {
       console.log( 'successfully updated haidentot' );

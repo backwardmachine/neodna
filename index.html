@@ -45,6 +45,7 @@
 <script src="js/Packet.js"></script>
 <script src="js/Pandeminium.js"></script>
 <script src="js/Parisfair.js"></script>
+<script src="js/Picture.js"></script>
 <script src="js/Phylactery.js"></script>
 <script src="js/Rack.js"></script>
 <script src="js/Satelytes.js"></script>
@@ -199,8 +200,7 @@
 <div id="journey"></div>
 
 <script language="javascript">
-console.log = function() {}
-
+//console.log = function() {}
 var sequence = __fasta__to__binary(
 	`TAATGGGCGAACGACGGGAATTGAACCCGCGCATGGTGGATTCACAATCCACTGCCTTGATCCACTTGGC
 TACATCCGCCCCCACTACTACTAATATTTTTTTTATTTTTAATCCATTTAAAAATTAAAAATAAAAAAAA
@@ -224,7 +224,6 @@ CAGCTGCAACAGGAGCTGAATATGCAACAGCAATCCAAGGGCGCATACCCAGACGGAAACTAAG`
 
 var gaaden = __init__gaaden( sequence );
 gaaden.init();
-gaaden.draw( 1 );
 gaaden.changed();
 gaaden.play();
 gaaden.draw( 1 );
@@ -234,11 +233,7 @@ __init__pdmn();
 var db = db__init();
 __init__controls();
 
-document.getElementById( "gaaden__fortune__name__input" ).addEventListener( "input", function( e ) {
-	//console.log( 'gaaden__fortune__name__input is changing' );
-	gaaden.db__name = e.target.value;
-	db__sequence__update__name( e.target.value );
-} );
+
 
 pandeminium.draw();
 </script>
