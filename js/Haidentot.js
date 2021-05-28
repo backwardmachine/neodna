@@ -72,8 +72,6 @@ class neodna__Haidentot
   {
     var data = sequence.get();
     this.animation.program( data.clip__focus );
-    //this.skutterer = new neodna__Skutterer ( this.ox, this.oy );
-    this.reset();
   }
 
   read()
@@ -203,37 +201,74 @@ class neodna__Haidentot
       {
         while ( this.forward() ) // play through completely once
           continue;
+        console.log( 'played through all frames' );
         //console.log( 'played through, frames = ', this.skutterer.frames );
       }
 
       if ( this.skutterer && this.skutterer.frames.length )
       {
         var i = 0;
+        var ids = new Array();
         for ( let frame of this.skutterer.frames )
         {
           var name = frame.substring( 6 );
           for ( let code of gaaden.pandeminium.book.codes )
-            cpy( code, name );
+            if ( code.name == name )
+              ids.push( code.id );
         }
 
-        function cpy( code, name )
+        console.log( ids );
+        if ( ids.length )
         {
-          if ( code.name == name )
+          text += ids[ 0 ];
+          sum += ids[ 0 ];
+          for ( let id of ids )
           {
-            if ( i > 0 )
-              text += ',';
-            text += code.id;
-            sum  += code.id;
-            m    = ( m + code.id ) / 2;
-            i++;
+            text += ',';
+            text += id;
+            sum += id;
           }
+
+          var m = ends( ids );
+          function ends( ids )
+          {
+            var i;
+
+            var s = 0;
+            for (
+              i = 0;
+                i < Math.min( ids.length, 8 );
+                  i++ )
+            {
+              console.log( s );
+              s = ( s + ids[ i ] ) / 2;
+            }
+
+            var e = 0;
+            for (
+              i = Math.min( ids.length - 1, 7 );
+                i >= 0;
+                  i-- )
+              e = ( e + ids[ i ] ) / 2;
+
+            return {
+              s: trim( s ),
+              e: trim( e )
+            };
+
+            function trim( m )
+            {
+              m = m.toString();
+              m = m.replace( /\./, 'd' );
+              return m;
+            }
+          }
+
+          console.log( m );
+          var name = m.s + 'm' + m.e + 's' + sum.toString();
+          download( text, name + '.canter', 'text/plain' );
         }
       }
-
-      m = m.toFixed( 8 );
-      m = m.toString();
-      m = m.replace( /\./, 'd' );
-      download( text, m + '.canter', 'text/plain' );
     }
   }
 }

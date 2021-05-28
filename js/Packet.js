@@ -487,7 +487,7 @@ class neodna__Packets
     //
   }
 
-  settle( x )
+  settle( x, nonce = 0 )
   {
     var i = 0;
     if ( this.array.length
@@ -502,7 +502,7 @@ class neodna__Packets
         var n = this.array[ i + 1 ];
         if ( n.value == 1 )
         {
-          p.add( x );
+          p.add( x, 0 );
           return;
         }
       }
@@ -510,7 +510,7 @@ class neodna__Packets
       var p = this.array[ this.array.length - 1 ];
       if ( p.value == 0 )
       {
-        p.add( x );
+        p.add( x, 0 );
         return;
       }
     }
@@ -635,9 +635,9 @@ class neodna__Packet
     this.packets = new neodna__Packets();
   }
 
-  add( x )
+  add( x, nonce )
   {
-    this.packets.settle( x );
+    this.packets.settle( x, nonce );
   }
 
   set( x )

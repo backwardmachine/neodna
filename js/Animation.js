@@ -49,7 +49,8 @@ class neodna__Animation
     if ( cursor.pos == this.words.length )
     {
       //console.log( 'reached the end of the road' );
-      cursor.frames = this.frames;
+      if ( !cursor.frames.length )
+        cursor.frames = this.frames;
       this.frames = new Array();
       return 0;
     }

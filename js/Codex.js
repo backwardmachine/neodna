@@ -52,7 +52,7 @@ Handler.code__codex = function ( cursor ) { // need to load the codex in by defa
 
 Handler.code__packet = function ( cursor ) {
   var x = getb( cursor.maiden );
-  cursor.packets.settle( x );
+  cursor.packets.settle( x, 1 );
 }
 
 Handler.code__origin = function ( cursor ) {
@@ -108,9 +108,9 @@ Handler.code__replicate = function ( cursor )
   if ( block )
   {
     if ( block.data == '1' )
-      cursor.packets.settle( 1 );
+      cursor.packets.settle( 1, 1 );
     else if ( block.data == '0' )
-      cursor.packets.settle( 0 );
+      cursor.packets.settle( 0, 1 );
   }
 }
 
@@ -120,7 +120,7 @@ Handler.code__adjust = function ( cursor ) {
   {
     var x = getb( cursor.maiden );
     if ( Number( block.data ) == x )
-      cursor.packets.settle( 1 ); // happens when
+      cursor.packets.settle( 1, 1 ); // happens when
   }
 }
 
@@ -269,7 +269,7 @@ Handler.code__flow = function ( cursor ) {
 
 Handler.code__settle = function ( cursor ) {
   var b = getb( cursor.maiden );
-  cursor.packets.settle( b );
+  cursor.packets.settle( b, 1 );
 }
 
 Handler.code__place = function ( cursor ) {

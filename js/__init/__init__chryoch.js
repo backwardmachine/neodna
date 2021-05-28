@@ -78,9 +78,8 @@ function __init__chryoch( )
   {
   	for ( let satelyte of gaaden.chryoch.satelytes )
   	{
-  		satelyte.reset();
   		satelyte.program( gaaden.__stack__center.sequence );
-  		//if ( satelyte.)
+      satelyte.reset();
   	}
   }
 }
