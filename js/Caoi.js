@@ -62,6 +62,7 @@ function caoi__binary( unit, canvas, block )
     }
   }
 
+  //console.log( 'filling rect with color =', context.fillStyle );
   context.fillRect(
     unit.x * spx,
     unit.y * spy,

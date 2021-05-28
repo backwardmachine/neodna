@@ -3,7 +3,7 @@ function getpixel( e )
 	var rect  = e.target.getBoundingClientRect();
 	var px 	  = e.clientX - rect.left; // x position
 	var py 	  = e.clientY - rect.top;  // y position
-	return { px: px, py: py };
+	return { px: Math.floor( px ), py: Math.floor( py ) };
 }
 
 function __binary__to__fasta( sequence )

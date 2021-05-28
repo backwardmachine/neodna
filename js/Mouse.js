@@ -33,24 +33,4 @@ class neodna__Mouse
 		if ( this.fns.out )
 			this.fns.out( px, py, e );
 	}
-
-/*
-	setfn__click( fn )
-	{
-		console.log( 'setting click fn' );
-		this.fns.click = fn;
-		var elem = document.getElementById( this.parent.nest );
-		elem.onclick = this.fns.click;
-		console.log( elem );
-	}
-
-	setfn__over( fn )
-	{
-		console.log( 'setting over fn' );
-		this.fns.over = fn;
-		var elem = document.getElementById( this.parent.nest );
-		elem.onmouseover = this.fns.over;
-		console.log( elem );
-	}
-	*/
 }

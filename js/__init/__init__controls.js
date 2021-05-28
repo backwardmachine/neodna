@@ -67,8 +67,7 @@ function __init__controls()
 
     };
     if ( event.target.files[ 0 ] )
-      reader
-        .readAsText( event.target.files[ 0 ] );
+      reader.readAsText( event.target.files[ 0 ] );
   } );
 
   function __init__fasta__input( e, binary )
@@ -120,7 +119,7 @@ function __init__controls()
     gaaden.play();
   	gaaden.draw( 1 );
     //gaaden.haidentot.draw( 1 );
-    gaaden.satelytes.draw( 0 );
+    gaaden.chryoch.draw( 0 );
   }
 */
 

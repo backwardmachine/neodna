@@ -4,6 +4,7 @@ class neodna__Skutterer
   constructor( x, y )
   {
     this.__data    = 0; // give a skutterer access to the data blocks when building the haidentot
+    this.__canvas  = 0;
     this.x         = x;
     this.y         = y;
     this.ox        = x;
@@ -15,7 +16,6 @@ class neodna__Skutterer
     this.maiden    = 1;
     this.frame     = 0;
     this.incident  = 1;
-    this.vars      = new Array();
     this.packets   = new neodna__Packets();
     this.skittle   = new neodna__Skittle();
     this.gate      = new neodna__Gate();
@@ -24,16 +24,25 @@ class neodna__Skutterer
     this.escape    = 0;
     this.pos       = 0;
     this.opacity   = 1;
-    this.itinerary = 0;
-    this.codex     = 0;
     this.oldenscrybe = 0;
     this.dally = {
       x: 0,
       y: 0
-    }
+    };
     this.tail = new neodna__Tail();
     this.chamber = 0;
     this.focus = 0;
+  }
+
+  reset( parent )
+  {
+    this.__data   = parent.src;
+    this.__canvas = parent.stack.canvas;
+    this.__canvas.intensity = 1;
+    this.__canvas.intensity__on = 1;
+    this.nX = parent.sX;
+    this.nY = parent.sY;
+    this.oldenscrybe = parent.oldenscrybe;
   }
 
   canterroll()

@@ -1,66 +1,3 @@
-function __init__mouse__haidentot__over( px, py, e )
-{
-  //console.log( 'mouse is over canvas' );
-  var unit = this.getXYp( px, py );
-  if ( this.border.state != 4 )
-  {
-    this.border.on = 1;
-    this.border.state = 1;
-  }
-}
-
-function __init__mouse__haidentot__click( px, py, e )
-{
-  console.log( 'click at px=' + px + ', py = ' + py );
-  var unit = this.getXYp( px, py );
-  //if ( this.border.state == 4 )
-    this.border.state = 2;
-  //else
-  //  this.border.state = 4;
-  __init__pdmn__track( e );
-}
-
-function __init__mouse__haidentot__out( px, py, e )
-{
-  //console.log( 'mouse has moved away' );
-  if ( this.border.state != 4 )
-  {
-    this.border.on = 1;
-    this.border.state = 3;
-    //this.draw__border();
-    this.border.on = 0;
-    this.border.state = 0;
-  }
-}
-
-function __init__canvas__haidentot( nest, width, height )
-{
-  var elem = document.getElementById( nest );
-  if ( elem )
-    elem.onselectstart = function () { return false; }
-
-  var canvas = new neodna__Canvas();
-  canvas.split ( width, height ); // creates a rack
-  canvas.span  ( 4, 4 );
-  canvas.use   ( nest    );
-  canvas.caoi  ( caoi__binary__clean );
-  canvas.mouse = new neodna__Mouse( canvas );
-  canvas.mouse.fns.click = __init__mouse__haidentot__click.bind( canvas );
-  canvas.mouse.fns.over  = __init__mouse__haidentot__over.bind( canvas );
-  canvas.mouse.fns.out   = __init__mouse__haidentot__out.bind( canvas );
-  canvas.border = {
-    on:       0,
-    size:     5,
-    state:    0,
-    over:     '#ffffff',
-    out:      '#000000',
-    selected: '#b3b372',
-    clicked:  '#ff00ff'
-  };
-  return canvas;
-}
-
-
 class neodna__Haidentot
 {
   constructor( id )
@@ -80,77 +17,48 @@ class neodna__Haidentot
     this.src = 0;
     this.src__offset = 0;
     this.__flags = new neodna__Flags();
-    this.__itinerary = 0;
+    this.__cfg = 0;
   }
 
   init()
   {
-    //console.log( 'building haidentot' );
-    var stack    = new neodna__Stack();
-    var sequence = new neodna__Sequence( '' );
-    var str = '';
+    var sequence = '';
     var i = 0;
     for (
       i = 0;
         i < this.sX * this.sY;
           i++ )
-      str += '0';
-    sequence.set( str );
-    sequence.set__width    ( this.sX );
-    sequence.sequence__clip__length = 100000;
-    sequence.build();
-    stack.sequence = sequence;
-    //console.log( 'haidentot=', this );
-    this.stack = stack;
-    this.construct();
+      sequence += '0';
 
-    //this.animate();
+    this.__cfg = {
+      leading	 		: 0,
+      trailing 		: 0,
+      width		 		: this.sX,
+      length	 		: this.sX * this.sY,
+      nest		 		: "__canvas__satelyte__" + this.id,
+      container   : "neodna__satelyte__haidentot__" + this.id,
+      caoi		 		: caoi__binary__clean,
+      pixels	 		: { x: 4, y: 4 },
+      visible  		: this.sX * this.sY
+    };
+
+    this.stack = __init__stack( sequence, this.__cfg );
+    this.stack.canvas = __init__stack__canvas( this.__cfg, this.sX, this.sY );
+    __init__mouse( this.stack, this.__cfg.container );
+    this.stack.canvas.intensity = 1;
+    this.stack.canvas.intensity__on = 1;
+    this.stack.update();
+    if ( !this.src )
+      this.src = this.stack.blocks;
+
+    //this.skutterer = new neodna__Skutterer ( this.ox, this.oy );
+    //this.skutterer.reset( this );
+    this.reset();
   }
 
   set( sequence )
   {
-    if ( !this.stack )
-    {
-      console.log( 'please use init() before attempting to set a sequence to this Haidentot.' );
-      return 0;
-    }
-    var stack = this.stack;
-    stack.sequence.set( sequence );
-    stack.sequence.build();
-    this.construct();
-    return 1;
-  }
-
-  construct()
-  {
-    console.log( 'constructing haidentot' );
-    var stack = this.stack;
-    var nX = stack.sequence.getwidth();
-    var nY = stack.sequence.getheight();
-
-    // create canvas
-    var canvas = __init__canvas__haidentot( this.nest, nX, nY );
-    __init__mouse( stack, "neodna__satelyte__haidentot__" + this.id );
-    stack.canvas = canvas;
-    stack.canvas.intensity = 1;
-    stack.canvas.intensity__on = 1;
-    //console.log( stack.canvas.mouse );
-
-    // create blocks filled with sequence data
-    stack.blocks = new neodna__Blocks( nX, nY, stack );
-    stack.blocks.build();
-    stack.blocks.clear();
-    stack.blocks.data  ( stack.sequence.get().clip__focus );
-
-    if ( !this.src )
-      this.src = this.stack.blocks;
-
-    this.skutterer__begin();
-  }
-
-  animate()
-  {
-
+    this.stack.set( sequence );
   }
 
   attach( data, offset )
@@ -160,15 +68,12 @@ class neodna__Haidentot
     this.skutterer.__data = this.src;
   }
 
-  update()
+  program( sequence )
   {
-    //console.log( 'updating haidentot' );
-  }
-
-  program( data )
-  {
-    var sequence = data.get();
-    this.animation.program( sequence.clip__focus );
+    var data = sequence.get();
+    this.animation.program( data.clip__focus );
+    //this.skutterer = new neodna__Skutterer ( this.ox, this.oy );
+    this.reset();
   }
 
   read()
@@ -188,7 +93,7 @@ class neodna__Haidentot
     }
   }
 
-  forward( n )
+  forward()
   {
     if ( !this.stack )
     {
@@ -196,12 +101,7 @@ class neodna__Haidentot
       return 0;
     }
     if ( this.skutterer )
-      return this.animation.forward( n, this.skutterer );
-  }
-
-  complete()
-  {
-    this.animation.complete( this.skutterer );
+      return this.animation.forward( this.skutterer );
   }
 
   draw( f = 0 )
@@ -231,8 +131,8 @@ class neodna__Haidentot
   reset()
   {
     this.animation.reset();
-    this.skutterer__begin();
-    //this.program( gaaden.__stack__center.sequence );
+    this.skutterer = new neodna__Skutterer ( this.ox, this.oy );
+    this.skutterer.reset( this );
     this.clear();
     this.blank();
     console.log( 'reset haidentot =', this );
@@ -264,51 +164,6 @@ class neodna__Haidentot
     */
   }
 
-  tome( tome )
-  {
-    this.__tome = tome;
-  }
-
-  // changed in this function are typically used by the program
-  skutterer__begin()
-  {
-    this.skutterer = new neodna__Skutterer ( this.ox, this.oy );
-    //this.skutterer.parent = this;
-    this.skutterer.canvas = this.stack.canvas;
-    this.skutterer.canvas.intensity = 1;
-    this.skutterer.canvas.intensity__on = 1;
-    this.skutterer.nX = this.sX;
-    this.skutterer.nY = this.sY;
-    this.skutterer.__data = this.src;
-    this.skutterer.tome = this.__tome;
-    //this.skutterer.itinerary = this.__itinerary;
-    this.skutterer.oldenscrybe = this.oldenscrybe;
-    //console.log( 'this.skutterer.itinerary=', this.skutterer.itinerary );
-  }
-/*
-  itinerary( itinerary )
-  {
-    //console.log( 'setting itinerary for ', this );
-    //console.log( 'to itinerary=', itinerary );
-    this.__itinerary = itinerary;
-    this.skutterer__begin();
-  }
-*/
-  host( oldenscrybe )
-  {
-    /*
-    console.log( 'haidentot is using new oldenscrybe=', oldenscrybe );
-    var oldenscrybe__ = this.oldenscrybe;
-    this.oldenscrybe = oldenscrybe;
-    this.skutterer.oldenscrybe = oldenscrybe;
-    if ( oldenscrybe
-      && oldenscrybe__.id != oldenscrybe.id )
-    {
-      // change of oldenscrybe
-    }
-    */
-  }
-
   link( oldenscrybe )
   {
     console.log( 'changing haidentot link to=', oldenscrybe );
@@ -319,7 +174,7 @@ class neodna__Haidentot
       return; // no change
     this.oldenscrybe = oldenscrybe;
 
-    oldenscrybe          .subscribe   ( this );
+    oldenscrybe.subscribe ( this );
     if ( oldenscrybe__previous )
       oldenscrybe__previous.unsubscribe ( this );
 
@@ -329,10 +184,56 @@ class neodna__Haidentot
       color:       this.color,
       oldenscrybe: this.oldenscrybe.id
     };
-    console.log( 'updating haidentot=', __haidentot );
     db__haidentot__update( __haidentot );
+  }
 
-    //this.reset();
-    //this.skutterer.oldenscrybe = oldenscrybe;
+  export()
+  {
+    console.log( 'exporting' );
+    if ( this.oldenscrybe
+      && this.oldenscrybe.canterroll )
+    {
+      console.log( 'exporting oldenscrybe=', this.oldenscrybe );
+      var canterroll = this.oldenscrybe.canterroll;
+      var text = '';
+      var i    = 0;
+      var sum  = 0;
+      var m    = 0;
+      if ( this.skutterer && !this.skutterer.frames.length )
+      {
+        while ( this.forward() ) // play through completely once
+          continue;
+        //console.log( 'played through, frames = ', this.skutterer.frames );
+      }
+
+      if ( this.skutterer && this.skutterer.frames.length )
+      {
+        var i = 0;
+        for ( let frame of this.skutterer.frames )
+        {
+          var name = frame.substring( 6 );
+          for ( let code of gaaden.pandeminium.book.codes )
+            cpy( code, name );
+        }
+
+        function cpy( code, name )
+        {
+          if ( code.name == name )
+          {
+            if ( i > 0 )
+              text += ',';
+            text += code.id;
+            sum  += code.id;
+            m    = ( m + code.id ) / 2;
+            i++;
+          }
+        }
+      }
+
+      m = m.toFixed( 8 );
+      m = m.toString();
+      m = m.replace( /\./, 'd' );
+      download( text, m + '.canter', 'text/plain' );
+    }
   }
 }

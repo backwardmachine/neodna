@@ -1,9 +1,15 @@
 function __init__stack__canvas( __cfg, width, height )
 {
   var elem = document.getElementById( __cfg.nest );
-  elem.onselectstart = function () { return false; }
+  if ( elem )
+    elem.onselectstart = function () { return false; }
 
   var canvas = new neodna__Canvas();
+  canvas.__cfg = __cfg;
+  canvas.__cfg.words = {
+    n: 1,
+    array: '01'
+  };
   canvas.split (
     width,
     height
@@ -21,5 +27,6 @@ function __init__stack__canvas( __cfg, width, height )
   ] );
   if ( __cfg.caoi )
     canvas.caoi  ( __cfg.caoi );
+
   return canvas;
 }

@@ -86,6 +86,32 @@ class neodna__Blocks
 		}
 	}
 
+	words( words )
+	{
+		var i = 0;
+		for ( let word of words )
+		{
+			//var str = word.toString( 2 );
+			var j = 0;
+			for (
+				j = 0;
+		 			j < word.length;
+						j++ )
+			{
+				//console.log( 'setting word=', str );
+				var block = this.blocks[ i ];
+				if ( !block )
+					return;
+				block.data = {
+					word:  word,
+					index: j,
+					char:  word[ j ]
+				}
+				i++;
+			}
+		}
+	}
+
 	data__push()
 	{
 		if ( !this.blocks.length )

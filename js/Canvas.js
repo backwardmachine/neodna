@@ -26,12 +26,12 @@ function __init__canvas( vars )
   canvas.mouse = new neodna__Mouse();
   canvas.mouse.fns.click = function( px, py )
   {
-    console.log( 'click at px=' + px + ', py = ' + py );
+    //console.log( 'click at px=' + px + ', py = ' + py );
     var unit = this.getXYp( px, py );
   }.bind( canvas );
   canvas.mouse.fns.over = function( px, py )
   {
-    console.log( 'mouse is over canvas' );
+    //console.log( 'mouse is over canvas' );
     var unit = this.getXYp( px, py );
     unit.__flags.setflag( __STACK__MOUSE__OVER );
   }.bind( canvas );
@@ -59,6 +59,7 @@ class neodna__Canvas
 		this.drawn 			= 0;
     this.border     = 0;
     this.data       = 0;
+    this.__cfg      = 0;
 	}
 
 	use( nest )
@@ -137,7 +138,7 @@ class neodna__Canvas
 	index( x, y )
 	{
 		if ( !this.rack )
-			return 0;
+			return -1;
 		return ( y * this.rack.sX ) + x;
 	}
 

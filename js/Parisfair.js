@@ -61,7 +61,7 @@ class neodna__PdmnParisfair
       oldenscrybe.build();
     }
 
-    //for ( let satelyte of gaaden.satelytes.satelytes )
+    //for ( let satelyte of gaaden.chryoch.satelytes )
     //  satelyte.reset();
   }
 

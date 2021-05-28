@@ -13,7 +13,15 @@ class neodna__Stack
   set( data )
   {
     if ( this.sequence )
+    {
       this.sequence.set( data );
+      this.sequence.set__offset( 0 );
+    }
+    this.update();
+  }
+
+  update()
+  {
     this.sequence.build();
 
     var w = this.sequence.getwidth  ();
@@ -25,6 +33,9 @@ class neodna__Stack
     this.blocks = new neodna__Blocks( w, h, this );
     this.blocks.build();
     this.blocks.data( this.sequence.focus() );
+
+    if ( this.sequence.words.length )
+      this.blocks.words( this.sequence.__words );
   }
 
   click( px, py, e )
@@ -105,6 +116,12 @@ class neodna__Stack
   width()
   {
     return this.canvas.width;
+  }
+
+  words( n )
+  {
+    this.sequence.words( n );
+    this.blocks.words( this.sequence.__words );
   }
 
   // draw the data

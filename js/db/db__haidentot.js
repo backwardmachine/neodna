@@ -58,7 +58,7 @@ function db__haidentot__update( haidentot )
 
 function db__haidentot__fetch()
 {
-  gaaden.satelytes.fetching();
+  gaaden.chryoch.fetching();
 
   var range = IDBKeyRange.bound(
     0,
@@ -68,7 +68,7 @@ function db__haidentot__fetch()
   let transaction
     = db.connection.transaction( "haidentot", "readwrite" );
   transaction.oncomplete = function() {
-    gaaden.satelytes.fetched();
+    gaaden.chryoch.fetched();
   }
   let store = transaction.objectStore( "haidentot" );
   let r1 = store.openCursor( range );
@@ -89,7 +89,7 @@ function db__haidentot__fetch__single( e )
       haidentot.oldenscrybe__id = entry.oldenscrybe;
       //haidentot.program( gaaden.__stack__center.sequence );
 
-      gaaden.satelytes.add( haidentot );
+      gaaden.chryoch.add( haidentot );
       console.log( 'got haidentot from DB=', entry )
     }
     request.result.continue();

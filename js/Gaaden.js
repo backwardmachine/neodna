@@ -20,7 +20,7 @@ class neodna__Gaaden
     this.pandeminium   = new neodna__Pandeminium();
     this.calismade     = new neodna__Calismade ( 20, 0 );
     this.fortunes      = new neodna__Fortunes  ( 20, 0 );
-    this.satelytes     = new neodna__Satelytes ();
+    this.chryoch       = new neodna__Chryoch();
   }
 
   init()
@@ -35,9 +35,9 @@ class neodna__Gaaden
   {
     console.log( this );
     console.log( 'this.pandeminium.__loaded=', this.pandeminium.__loaded );
-    console.log( 'this.satelytes.__loaded=', this.satelytes.__loaded );
+    console.log( 'this.chryoch.__loaded=', this.chryoch.__loaded );
     if ( this.pandeminium.__loaded
-      && this.satelytes.__loaded )
+      && this.chryoch.__loaded )
       this.loaded();
   }
 
@@ -45,39 +45,17 @@ class neodna__Gaaden
   {
     console.log( 'gaaden is loaded' );
     var stack = this.__stack__center;
-    this.satelytes.program( stack.sequence );
-    this.satelytes.link();
-    /*
-    for ( let satelyte of this.satelytes.satelytes )
-    {
-      // load program
-      var stack = this.__stack__center;
-      satelyte.program( stack.sequence );
-
-      // load library
-      if ( satelyte.oldenscrybe__id )
-      {
-        var parisfair = this.pandeminium.parisfair;
-        var oldenscrybe = parisfair.get( satelyte.oldenscrybe__id );
-        if ( oldenscrybe )
-          satelyte.link( oldenscrybe );
-      }
-
-      satelyte.reset();
-    }
-    */
+    this.chryoch.program( stack.sequence );
+    this.chryoch.link();
   }
 
   set( sequence )
   {
     var stack = gaaden.__stack__center;
-    stack.sequence.set( sequence );
-    stack.sequence.set__offset ( 0 );
-    stack.sequence.build();
+    stack.set( sequence );
 
-    //console.log( 'programming satelytes=', stack.sequence );
-    this.satelytes.program( stack.sequence );
-    this.satelytes.reset();
+    this.chryoch.program( stack.sequence );
+    this.chryoch.reset();
   }
 
   offset( n ) // refine this later to avoid rebuilds
@@ -198,17 +176,13 @@ class neodna__Gaaden
         }
       }
     }
-
   }
 
   update__fortune()
   {
     var elem = document.getElementById( "gaaden__fortune__name__input" );
     if ( elem )
-    {
       elem.value = this.db__name;
-      //console.log( 'changing value to name=', this.db__name );
-    }
   }
 
   refresh()
@@ -232,26 +206,15 @@ class neodna__Gaaden
     elem.innerHTML = index;
   }
 
-  changed() // changed sequence from one to another
+  changed()
   {
-    // load the __stack__center sequence into all satelytes as the program
-    //this.satelytes.program( this.__stack__center.sequence );
-
-    // set the data of each satelyte to __stack__center
-    for ( let satelyte of this.satelytes.satelytes )
+    /*
+    for ( let satelyte of this.chryoch.satelytes )
     {
       if ( satelyte.__flags.isflag( __STACK__SATELYTE__LOCKED ) )
         continue;
-      //satelyte.set( this.__stack__center.sequence.get().clip__focus );
-      //satelyte.reset();
-      //satelyte.clear();
-      //satelyte.blank();
-      //satelyte.attach( satelyte.stack.blocks );
-      //satelyte.attach ( this.__stack__center.blocks, 0 );
-      //satelyte.read   ();
-      //satelyte.attach ( satelyte.stack.blocks, 0 );
     }
-
+    */
   }
 
   focus()
@@ -297,7 +260,6 @@ class neodna__Gaaden
       + this.__stack__left__packets  .height()
       + this.__stack__right__packets .height()
     );
-    //console.log( 'latherituum height = ', height );
     return height;
   }
 
@@ -327,32 +289,10 @@ class neodna__Gaaden
   	this.refresh();
     this.changed();
   	this.draw( 1 );
-    //this.haidentot.draw( 1 );
-    //this.satelytes.draw( 1 );
-  	// Play the animation
-  	//this.play();
   }
 
   play()
   {
-    //this.haidentot.play();
-    this.satelytes.play();
+    this.chryoch.play();
   }
 }
-/*
-function __adjust__gaaden__down( amount )
-{
-  __gaaden__left__interval__var = amount;
-  __gaaden__left__interval = setInterval( __adjust__gaaden__interval, 10 );
-  gaaden.adjust( __gaaden__left__interval__var );
-}
-
-function __adjust__gaaden__interval( e )
-{
-  //console.log( 'adjusting gaaden' );
-  gaaden.adjust( __gaaden__left__interval__var );
-}
-
-var __gaaden__left__interval      = 0;
-var __gaaden__left__interval__var = 0;
-*/

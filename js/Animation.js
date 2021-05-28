@@ -42,7 +42,7 @@ class neodna__Animation
     this.runs   = 0;
   }
 
-  forward( n, cursor )
+  forward( cursor )
   {
     if ( !this.words.length ) // no program
       return 0;
@@ -64,24 +64,6 @@ class neodna__Animation
     }
 
     return 0;
-  }
-
-  complete( cursor )
-  {
-    var i = 0;
-    while ( this.forward( 1, cursor ) )
-    {
-      if ( i > 100000 )
-        break;
-      if ( cursor.pos == this.words.length )
-        break; // no more words
-      i++;
-    }
-
-    cursor.frame = 0;
-    cursor.pos   = 0;
-    this.runs++;
-    this.frames = new Array();
   }
 
   extend( __in, cursor )

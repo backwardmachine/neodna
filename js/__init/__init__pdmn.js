@@ -125,7 +125,7 @@ function __init__pdmn()
   }
 
   var i = 0;
-  for ( let satelyte of gaaden.satelytes.satelytes )
+  for ( let satelyte of gaaden.chryoch.satelytes )
   {
   	var elem = document.getElementById( "neodna__satelyte__" + i + "__sheath" );
   	elem.onclick = __init__pdmn__track;
@@ -134,11 +134,11 @@ function __init__pdmn()
   }
 }
 
-function __init__pdmn__track( e )
+function __init__pdmn__track( e, id )
 {
   //console.log( e );
-  var numbers = e.target.id.match( /([0-9]+)/ );
-  var host__id = numbers[ 0 ];
+  //var numbers = e.target.id.match( /([0-9]+)/ );
+  //var host__id = numbers[ 0 ];
 
   var posX = e.pageX + 4; // x position
   var posY = e.pageY - 4; // y position
@@ -156,7 +156,7 @@ function __init__pdmn__track( e )
   var content = document.getElementById( "neodna__pdmn__content" );
   content.style.display = "block";
 
-  var satelyte = gaaden.satelytes.satelytes[ host__id ];
+  var satelyte = gaaden.chryoch.satelytes[ id ];
   var parisfair = pandeminium.parisfair;
   parisfair.watch( satelyte );
 }

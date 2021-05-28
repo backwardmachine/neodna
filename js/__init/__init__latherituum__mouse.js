@@ -1,13 +1,5 @@
 function __init__latherituum__mouse ( stack )
 {
-  /*
-  var obj = document.getElementById( name );
-  obj.style.width  = stack.canvas.width  + 'px';
-  obj.style.height = stack.canvas.height + 'px';
-  obj.width        = stack.canvas.width;
-  obj.height       = stack.canvas.height;
-*/
-
   var name = "neodna__latherituum__center";
   var elem = document.getElementById( name );
   elem.onclick = function ( e )

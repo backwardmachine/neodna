@@ -5,12 +5,13 @@
 <title>Neodna</title>
 <script src="js/__debug/__debug.js"></script>
 <script src="js/__init/__init__mouse.js"></script>
+<script src="js/__init/__init__mouse__chryoch.js"></script>
 <script src="js/__init/__init__orbit.js"></script>
 <script src="js/__init/__init__controls.js"></script>
 <script src="js/__init/__init__blocks.js"></script>
 <script src="js/__init/__init__gaaden.js"></script>
 <script src="js/__init/__init__pdmn.js"></script>
-<script src="js/__init/__init__satelytes.js"></script>
+<script src="js/__init/__init__chryoch.js"></script>
 <script src="js/__init/__init__stack.js"></script>
 <script src="js/__init/__init__stack__canvas.js"></script>
 <script src="js/__init/__init__stack__packets.js"></script>
@@ -21,6 +22,7 @@
 <script src="js/__init/__init__phylactery__mouse.js"></script>
 <script src="js/__init/__init__parisfair__mouse.js"></script>
 <script src="js/__resize/__resize__stack.js"></script>
+<script src="js/__caoi/__caoi__tools.js"></script>
 
 <script src="js/Animation.js"></script>
 <script src="js/Block.js"></script>
@@ -48,13 +50,13 @@
 <script src="js/Picture.js"></script>
 <script src="js/Phylactery.js"></script>
 <script src="js/Rack.js"></script>
-<script src="js/Satelytes.js"></script>
 <script src="js/Sequence.js"></script>
 <script src="js/Skittle.js"></script>
 <script src="js/Skutterer.js"></script>
 <script src="js/Stack.js"></script>
 <script src="js/Tail.js"></script>
 <script src="js/Tome.js"></script>
+<script src="js/Tools.js"></script>
 
 <script src="js/db/db__calismade.js"></script>
 <script src="js/db/db__export.js"></script>
@@ -162,21 +164,25 @@
 			</div>
 
 
-			<div id="neodna__satelytes__motion__outer">
-				<div id="neodna__satelytes__motion">
+			<div id="neodna__chryoch__motion__outer">
+				<div id="neodna__chryoch__motion">
 
-					<div id="neodna__satelytes__program"></div>
-					<div id="neodna__satelytes__forward"></div>
+					<div id="neodna__chryoch__program"></div>
+					<div id="neodna__chryoch__forward"></div>
 				</div>
-				<div id="neodna__satelytes__moment"></div>
+				<div id="neodna__chryoch__moment"></div>
 			</div>
 			</div>
 
 			<div id="neodna__chryoch__outer">
+				<div id="neodna__chryoch__tools">
+					<canvas id="neodna__chryoch__tools__canvas"></canvas>
+				</div>
 				<div id="neodna__chryoch">
 
 				</div>
 				<div id="neodna__chryoch__add">+</div>
+				<div id="neodna__chryoch__tools__options"></div>
 			</div>
 		</div>
 	</div>
@@ -200,7 +206,7 @@
 <div id="journey"></div>
 
 <script language="javascript">
-console.log = function() {}
+//console.log = function() {}
 var sequence = __fasta__to__binary(
 	`TAATGGGCGAACGACGGGAATTGAACCCGCGCATGGTGGATTCACAATCCACTGCCTTGATCCACTTGGC
 TACATCCGCCCCCACTACTACTAATATTTTTTTTATTTTTAATCCATTTAAAAATTAAAAATAAAAAAAA
@@ -228,12 +234,10 @@ gaaden.changed();
 gaaden.play();
 gaaden.draw( 1 );
 
-__init__satelytes();
+__init__chryoch();
 __init__pdmn();
 var db = db__init();
 __init__controls();
-
-
 
 pandeminium.draw();
 </script>

@@ -4,6 +4,7 @@ function getb( p )
     return 1;
   else if ( p == -1 )
     return 0;
+  return -1;
 }
 
 var Handler = {};
@@ -11,18 +12,10 @@ var Handler = {};
 Handler.code__move = function ( cursor ) {
   switch ( cursor.direction ) // by how much?
   {
-    case 0:
-      cursor.x += 1;
-      break;
-    case 1:
-      cursor.y += 1;
-      break;
-    case 2:
-      cursor.x -= 1;
-      break;
-    case 3:
-      cursor.y -= 1;
-      break;
+    case 0: cursor.x += 1; break;
+    case 1: cursor.y += 1; break;
+    case 2: cursor.x -= 1; break;
+    case 3: cursor.y -= 1; break;
   }
 }
 
@@ -214,7 +207,7 @@ Handler.code__opacity = function ( cursor ) {
 }
 
 Handler.code__intensity = function ( cursor ) {
-  var canvas = cursor.canvas;
+  var canvas = cursor.__canvas;
   canvas.intensity += cursor.maiden * 0.005;
   if ( canvas.intensity > 1 )
     canvas.intensity = 0;
@@ -369,38 +362,28 @@ class neodna__PdmnCodex
 {
 	constructor( id, color )
 	{
-		this.id = id;
-    this.color = color;
-		this.codes = new Array();
-		this.length = 4;
-    this.names = new Array();
-		//gbl__library.add( this.id );
+		this.id      = id;
+    this.color   = color;
+		this.codes   = new Array();
+		this.length  = 4;
+    this.names   = new Array();
 	}
 
 	add( code )
 	{
-
 		if ( this.codes.length >= this.length )
 			console.log( 'codex is full, failed to add...');
-		//else if ( this.codes.includes( code ) )
-		//	console.log( 'codex already contains this code' );
 		else
     {
 			this.codes.push( code );
-      this.changed();
+      this.names = new Array();
+      for ( let code of this.codes )
+      {
+        var name = Object.keys( Handler )[ code ];
+        this.names.push( name );
+      }
     }
 	}
-
-  changed()
-  {
-    console.log( 'codex changed' );
-    this.names = new Array();
-    for ( let code of this.codes )
-    {
-      var name = Object.keys( Handler )[ code ];
-      this.names.push( name );
-    }
-  }
 
 	draw()
 	{
@@ -411,18 +394,15 @@ class neodna__PdmnCodex
 
 	html()
 	{
-    //console.log( 'book=', pandeminium.book );
-		//console.log( 'drawing codex with codes=', this.codes );
 		var html = '';
 		var i = 0;
 		for ( let id of this.codes )
 		{
       var code = pandeminium.book.get( id );
-      //console.log( 'code=', code );
 			var name = Object.keys( Handler )[ code.id ];
       if ( !name )
         continue;
-			//console.log( 'name=', name );
+
 			html += '<div id="neodna__pdmn__codex' + this.id + '__code' + i
 			+ '" class="neodna__pdmn__codex__code" style="background:' + code.color
       + '"><div class="neodna__pdmn__code__inner">' + name.substring( 6 ) + '</div></div>';
@@ -431,70 +411,3 @@ class neodna__PdmnCodex
 		return html;
 	}
 }
-
-/*
-var codex__a = new Codex(
-  [ code__incident,
-    code__maiden,
-    code__move,
-    code__codex ]
-);
-
-var codex__b = new Codex(
-  [ code__move,
-    code__codex,
-    code__direction,
-    code__maiden ]
-);
-
-var codex__c = new Codex(
-  [ code__codex,
-    code__var,
-    code__skittle,
-    code__raise ]
-);
-
-var codex__d = new Codex(
-  [ code__origin, // options.. move instead
-    code__codex,
-    code__change,
-    code__spin ]
-);
-
-var codex__e = new Codex(
-  [ code__codex,
-    code__consume,
-    code__when,
-    code__mod ]
-);
-
-var codex__f = new Codex(
-  [ code__adjust,
-    code__spin,
-    code__maiden,
-    code__codex ]
-);
-
-var codex__g = new Codex(
-  [ code__climb,
-    code__fall,
-    code__move,
-    code__codex ]
-);
-
-var codex__h = new Codex(
-  [ code__opacity,
-    code__move,
-    code__adjust,
-    code__codex ]
-);
-
-var codex__i = new Codex(
-  [ code__intensity,
-    code__opacity,
-    code__change,
-    code__codex ]
-);
-*/
-
-//console.log( 'codex__a=', codex__a );

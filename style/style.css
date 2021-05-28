@@ -36,6 +36,7 @@ body {
 	height:0px;
 	font-size:0px;
 	height:100px;
+
 }
 
 #neodna__latherituum__left {
@@ -82,7 +83,7 @@ body {
 	grid-gap: 12px;
 }
 
-#neodna__satelytes__motion__outer {
+#neodna__chryoch__motion__outer {
 	display:inline-block;
 	position:relative;
 	width:300px;
@@ -90,7 +91,7 @@ body {
 	font-size:0px;
 }
 
-#neodna__satelytes__motion
+#neodna__chryoch__motion
 {
 	display:block;
 	position:absolute;
@@ -100,7 +101,7 @@ body {
 	height:48px;
 }
 
-#neodna__satelytes__moment {
+#neodna__chryoch__moment {
 	display:inline-block;
 	height:48px;
 	color: #fff;
@@ -108,19 +109,19 @@ body {
 	color:#999;
 }
 
-#neodna__satelytes__program {
+#neodna__chryoch__program {
 	display:inline-block;
 	width:48px;
 	height:48px;
 	background: url( "rightdown__plain.png" );
 }
 
-#neodna__satelytes__program:hover {
+#neodna__chryoch__program:hover {
 	cursor:pointer;
 	background: url( "rightdown__hover.png" );
 }
 
-#neodna__satelytes__forward {
+#neodna__chryoch__forward {
 	display:inline-block;
 	margin-left:5px;
 	width:48px;
@@ -128,12 +129,12 @@ body {
 	background: url( "rightarrow__plain.png" );
 }
 
-#neodna__satelytes__forward:hover {
+#neodna__chryoch__forward:hover {
 	cursor:pointer;
 	background: url( "rightarrow__hover.png" );
 }
 
-#neodna__satelytes__forward .selected {
+#neodna__chryoch__forward .selected {
 	background: url( "rightarrow__hover.png" );
 }
 
@@ -348,7 +349,6 @@ input:-webkit-autofill:active {
 	grid-gap: 0px;
 	background:#004466;
 	font-size:0px;
-	z-index:2;
 }
 
 .neodna__satelyte__vars {
@@ -362,7 +362,7 @@ input:-webkit-autofill:active {
 	display:none;
 }
 
-.neodna__satelytes__tab {
+.neodna__chryoch__tab {
 	display:inline-block;
 	height:12px;
 	font-size:12px;
@@ -554,6 +554,20 @@ input:-webkit-autofill:active {
 	width:600px;
 }
 
+#neodna__chryoch__outer
+{
+	position:relative;
+}
+
+#neodna__chryoch__tools
+{
+	display:block;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:1;
+}
+
 #neodna__chryoch__add {
 	display:inline-block;
 	font-size:48px;
@@ -569,4 +583,25 @@ input:-webkit-autofill:active {
 #neodna__chryoch__add:hover {
 	background:#555;
 	cursor:pointer;
+}
+
+#neodna__chryoch__tools
+{
+
+}
+
+#neodna__chryoch__tools__options {
+	position:absolute;
+	display:none;
+	left: 0;
+	top:  0;
+	width: 100px;
+	height: 20px;
+	z-index: 200;
+	background:#666666;
+	color:#fff;
+	font-family: georgia;
+	padding:2px;
+	padding-left:5px;
+	padding-right:5px;
 }
